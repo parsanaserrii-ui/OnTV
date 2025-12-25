@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="fa">
+<head>
+<meta charset="UTF-8">
+<title>تماشای آنلاین فیلم و سریال | VOD</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{margin:0;font-family:Tahoma,sans-serif;background:#0f172a;color:#fff}
+header{background:#020617;padding:18px;text-align:center;font-size:22px}
+nav{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;background:#020617;padding:10px}
+nav button{background:#1e293b;color:#fff;border:none;padding:8px 14px;cursor:pointer;border-radius:6px}
+nav button:hover{background:#334155}
+.movies{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;padding:20px}
+.movie{background:#020617;padding:10px;border-radius:10px}
+.movie h3{font-size:15px;margin:8px 0}
+video{width:100%;border-radius:8px}
+footer{text-align:center;padding:15px;color:#94a3b8;font-size:13px}
+</style>
+</head>
+<body>
+
+<header>🎬 پلتفرم تماشای آنلاین فیلم — رایگان</header>
+
+<nav>
+<button onclick="show('all')">همه</button>
+<button onclick="show('action')">اکشن</button>
+<button onclick="show('kids')">کودک</button>
+<button onclick="show('doc')">مستند</button>
+<button onclick="show('sci')">علمی‌تخیلی</button>
+</nav>
+
+<div class="movies" id="movies"></div>
+
+<footer>
+نسخه اولیه — آماده لاگین، اشتراک و پنل مدیریت
+</footer>
+
+<script>
+const movies=[
+{t:"Big Buck Bunny",c:"kids",u:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"},
+{t:"Sintel",c:"action",u:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/Sintel.mp4"},
+{t:"Tears of Steel",c:"sci",u:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4"},
+{t:"Elephants Dream",c:"sci",u:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"},
+{t:"For Bigger Blazes",c:"action",u:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"},
+{t:"For Bigger Escape",c:"action",u:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerEscapes.mp4"},
+{t:"For Bigger Fun",c:"kids",u:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerFun.mp4"},
+{t:"For Bigger Joyrides",c:"kids",u:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerJoyrides.mp4"},
+{t:"For Bigger Meltdowns",c:"doc",u:"https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerMeltdowns.mp4"}
+];
+
+function show(cat){
+const box=document.getElementById("movies");
+box.innerHTML="";
+movies.filter(m=>cat==="all"||m.c===cat).forEach(m=>{
+box.innerHTML+=`<div class="movie"><h3>${m.t}</h3><video controls><source src="${m.u}" type="video/mp4"></video></div>`;
+});
+}
+show("all");
+</script>
+
+</body>
+</html>
